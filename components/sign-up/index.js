@@ -446,13 +446,6 @@ Component({
     },
     async getSignRule() {
       const { result, code } = await requestApi('getSignInRule');
-      if (code !== 0) {
-        wx.showToast({
-          title: `获取签到规则失败`,
-          icon: 'none',
-          duration: 2000
-        })
-      }
       this.setData({
         prizeRule: result.rule
       });
