@@ -1,7 +1,7 @@
 const { PageModule } = require('@cloudbase/page-module');
 const pageModule = new PageModule('tcb:sign_up');
 const requestApi = async (methodName, params = {}) => {
-  const objInfo = await pageModule.callMethod(methodName, params)
+  const objInfo = await pageModule.callMethod(methodName, params);
   const { result: { code, data } } = objInfo;
   if (code !== 0) {
     wx.showToast({
@@ -302,7 +302,7 @@ Component({
             this.setData({ // 有抽奖机会
               dialogStatus: true,
               dialogInfo: 'activated-gift',
-              desc: result.prize.name,
+              desc: result.type === 'integral' ? result.prize.desc : result.prize.name,
               prizeData,
               heartenMsg: this.data.heartenMsg,
               extraPrizeId: result.extraPrizeId,
