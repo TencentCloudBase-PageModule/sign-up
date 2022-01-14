@@ -402,7 +402,6 @@ Component({
       if (type.detail === 'goods') {
         wx.chooseAddress({
           success(res) {
-
           },
           complete(end) {
             if (end.errMsg === 'chooseAddress:ok') {
@@ -426,9 +425,9 @@ Component({
       } else {
         that.closesignInDialog();
         wx.requestSubscribeMessage({
-          tmplIds: [this.properties.temId],
+          tmplIds: [that.properties.temId],
           success(res) {
-            if (res[this.properties.temId] === 'accept') {
+            if (res[that.properties.temId] === 'accept') {
               that.setRemind();
             }
 
