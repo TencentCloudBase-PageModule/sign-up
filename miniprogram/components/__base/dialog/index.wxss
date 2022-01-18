@@ -1,6 +1,6 @@
 /* components/signIn/Dialog/index.wxss */
 
-.signin-mask {
+.signUp-mask {
   background-color: rgba(0, 0, 0, 0.64);
   position: fixed;
   top: 0;
@@ -12,7 +12,7 @@
   z-index: 999;
 }
 
-.signin-dialog {
+.signUp-dialog {
   position: fixed;
   display: none;
   top: 50%;
@@ -23,11 +23,11 @@
   z-index: 1000;
 }
 
-.signin-dialog.show {
+.signUp-dialog.show {
   display: block;
 }
 
-.signin-dialog__inner {
+.signUp-dialog__inner {
   padding: 0 68rpx 44rpx;
   background: var(--layout-bg--);
   border-radius: 20rpx;
@@ -35,11 +35,11 @@
   z-index: 3;
 }
 
-.signin-dialog__inner.lottery-status {
+.signUp-dialog__inner.lottery-status {
   padding: 0 32rpx 32rpx;
 }
 
-.signin-dialog-bg {
+.signUp-dialog-bg {
   position: absolute;
   width: 100%;
   height: 420rpx;
@@ -50,12 +50,12 @@
   background-size: 100% auto;
 }
 
-.signin-dialog__header {
+.signUp-dialog__header {
   padding: 46rpx 44rpx 52rpx;
   text-align: center;
 }
 
-.signin-dialog-title {
+.signUp-dialog-title {
   line-height: 100rpx;
   font-size: 72rpx;
   color: var(--layout-bg--);
@@ -63,12 +63,12 @@
   z-index: 3;
 }
 
-.signin-dialog__body {
+.signUp-dialog__body {
   position: relative;
   z-index: 3;
 }
 
-.signin-dialog__prize {
+.signUp-dialog__prize {
   border-radius: 20rpx;
   padding: 40rpx 32rpx 52rpx;
   text-align: center;
@@ -76,34 +76,34 @@
   box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.05);
 }
 
-.signin-dialog__prize .prize-logo {
+.signUp-dialog__prize .prize-logo {
   width: 36px;
   height: 36px;
   display: block;
   margin: 0 auto;
 }
 
-.signin-dialog__prize .prize-logo {
+.signUp-dialog__prize .prize-logo {
   width: 36px;
   height: 36px;
 }
 
-.signin-dialog__prize .prize-con {
+.signUp-dialog__prize .prize-con {
   line-height: 68rpx;
   font-size: 48rpx;
   margin-top: 12rpx;
   color: var(--text-tit-color--);
 }
 
-.signin-get-clock-num {
+.signUp-get-clock-num {
   font-size: 32rpx;
 }
 
-.signin-dialog__prize .prize-con.redbag-lucre {
+.signUp-dialog__prize .prize-con.redbag-lucre {
   font-size: 36rpx;
 }
 
-.signin-dialog__prize-next {
+.signUp-dialog__prize-next {
   font-size: 28rpx;
   font-weight: 500;
   line-height: 40rpx;
@@ -112,7 +112,7 @@
   color: var(--text-label-color--);
 }
 
-.signin-dialog-btn {
+.signUp-dialog-btn {
   margin-top: 40rpx;
   height: 68rpx;
   width: 100% !important;
@@ -126,7 +126,7 @@
 
 
 
-.signin-lottery {
+.signUp-lottery {
   width: 100%;
   border-radius: 10px;
   background: var(--layout-bg--);
@@ -139,7 +139,7 @@
   color: var(--text-danger-color--);
 }
 
-.signin-get-prize {
+.signUp-get-prize {
   text-align: center;
 }
 
@@ -150,7 +150,7 @@
   vertical-align: super;
 }
 
-.signin-get-con {
+.signUp-get-con {
   display: inline-block;
   vertical-align: middle;
   margin-left: 16rpx;
@@ -159,7 +159,7 @@
   margin-bottom: 40rpx;
 }
 
-.signin-lottery-text {
+.signUp-lottery-text {
   margin-top: 24rpx;
   line-height: 50rpx;
   font-size: 32rpx;
@@ -253,14 +253,14 @@
   font-weight: 700;
 }
 
-.signin-dialog-goods-title {
+.signUp-dialog-goods-title {
   font-size: 22rpx;
   margin-top: 8rpx;
   padding: 0 12rpx;
   font-weight: 500;
 }
 
-.signin-dialog-goods-desc {
+.signUp-dialog-goods-desc {
   font-size: 20rpx;
   color: red;
   font-weight: 500;

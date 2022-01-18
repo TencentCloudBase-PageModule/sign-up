@@ -3,7 +3,17 @@
 ## 代码演示
 
 ```js
-<sign-up temId="eJ8NG1u50h13GiwfDpLtWBt42XekeY19yzmn5hPFr9o" page="pages/index/index" autoSign="true" baseConfig = "{{[{},{}]}}"></sign-up>
+<sign-up temId="eJ8NG1u50h13GiwfDpLtWBt42XekeY19yzmn5hPFr9o" page="pages/index/index" autoSign="true" baseConfig = "{{[
+  {
+    type: 'noPrize',
+    imgUrl: 'https://scene-module-9gee6idgabd997ca-1306328562.tcloudbaseapp.com/signIn/images/happy.svg',
+    title: '谢谢参与'
+    },
+   {
+    type: 'integral',
+    imgUrl: 'https://scene-module-9gee6idgabd997ca-1306328562.tcloudbaseapp.com/signIn/images/gold-logo.png',
+    title: '积分'
+      }]}}"></sign-up>
 ```
 
 ## 组件属性
@@ -14,11 +24,54 @@
 | temId               | 消息模板ID                            | String   | -                                  |
 | page                | 订阅消息跳转小程序页面地址            | String   | pages/index/index                  |
 | baseConfig          | 可自定义无奖励、积分文案与logo        | Object[] | -                                  |
-| baseConfig[].type   | 定义类型 integral:积分 noAward:无奖励 | string   | -                                  |
+| baseConfig[].type   | 定义类型  | string   | integral:积分 \| noPrize:无奖励                                 |
 | baseConfig[].imgUrl | 自定义图片地址                        | string   | -                                  |
-| baseConfig[].title  | 自定义积分、无奖励名称                | string   | integral:'积分' noAward:'谢谢参与' |
+| baseConfig[].title  | 自定义积分、无奖励名称                | string   | integral:'积分' \|  noPrize:'谢谢参与' |
 
+## 事件属性
+| 属性                | 说明                                  | 参数 |
+| ------------------- | ------------------------------------- | ------------------- |
+| dosign            | 返回签到结果                      | 成功信息、失败信息、已签到状态 |
+| doprize               | 返回抽奖结果信息               | 奖品类型（包括 无奖励），奖品名称 等信息 |
+| remind                | 返回订阅消息是否成功            | 成功、失败 |
 
+## 代码示例
+### dosign
+```
+<SignUp  bind:doSign="signResult"></SignUp>
+```
+```js
+Page({
+  data: {},
+  signResult: function (e) {
+    console.log(e.detail)
+  }
+})
+```
+### doprize
+```
+<SignUp bind:doPrize="doPrizeRes" ></SignUp>
+```
+```js
+Page({
+  data: {},
+  doPrizeRes: function (e) {
+    console.log(e.detail)
+  }
+})
+```
+### remind
+```
+<SignUp bind:remind="onRemindChange" ></SignUp>
+```
+```js
+Page({
+  data: {},
+  onRemindChange: function (e) {
+    console.log(e.detail)
+  }
+})
+```
 
 ## 注意事项
 

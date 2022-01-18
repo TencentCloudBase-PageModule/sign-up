@@ -1,13 +1,13 @@
 /* components/signIn/step.wxss */
 /*  签到步骤  start*/
-.signin-clock {
+.signUp-clock {
   margin-top: 24rpx;
   width: 100%;
   overflow: hidden;
 }
 
 
-.signin-clock-box {
+.signUp-clock-box {
   overflow-y: scroll;
   display: flex;
   flex-direction: row;
@@ -28,7 +28,7 @@
   position: absolute;
   width: 100%;
   height: 2rpx;
-  background: var(--signin-bright-color--);
+  background: var(--signUp-bright-color--);
   bottom: 48rpx;
   left: 0;
 }
@@ -41,30 +41,30 @@
   padding-right: 40rpx;
 }
 
-.signin-clock-box .icon-day {
+.signUp-clock-box .icon-day {
   width: 36rpx;
   height: 36rpx;
   display: block;
-  margin: 0 auto;
+  margin: 0 auto 12rpx;
 }
 
-.signin-clock-box .icon-day .signin-step-icon {
+.signUp-clock-box .icon-day .signUp-step-icon {
   width: 100%;
   height: 100%;
   display: inline-block;
 }
 
 
-.dot-line {
+.signUp-clock .dot-line {
   width: 10rpx;
   height: 10rpx;
-  background: var(--signin-bright-color--);
+  background: var(--signUp-bright-color--);
   border-radius: 50%;
   position: relative;
   margin: 8rpx auto 0;
 }
 
-.step-days {
+.signUp-clock .step-days {
   font-size: 24rpx;
   line-height: 36rpx;
   height: 36rpx;
@@ -77,23 +77,35 @@
 
 
 
-.step-item-regbag {
+.signUp-clock .step-item-regbag {
   position: absolute;
   top: 0;
-  left: -24rpx;
-}
-
-.step-item:first-child .step-item-regbag {
-  left: 14rpx;
+  width: 90rpx;
 }
 
 
-.step-item-regbag .redbag-text {
+.step-item-extra {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.step-item:first-child .step-item-extra {
+  padding-left: 40rpx;
+}
+
+.step-item:last-child .step-item-extra {
+  padding-right: 40rpx;
+}
+
+.step-item-extra .redbag-text {
   line-height: 36rpx;
   color: var(--text-normal-color--);
   font-size: 22rpx;
   font-weight: 500;
   max-width: 166rpx;
+  min-width: 90rpx;
   display: inline-block;
   text-align: center;
   background-color: #FDF6A4;
@@ -101,9 +113,19 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   padding: 0 6rpx;
+  box-sizing: border-box;
 }
 
-.step-item-regbag .red-arrow {
+.step-item-arrow {
+  position: absolute;
+  top: 38rpx;
+  width: 90rpx;
+  height: 20rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.step-item-arrow .red-arrow {
   width: 18rpx;
   height: 16rpx;
   margin: 0 auto;
@@ -112,9 +134,16 @@
   background-repeat: no-repeat;
 }
 
+.step-item:first-child .step-item-arrow {
+  padding-left: 40rpx;
+}
+
+.step-item:last-child .step-item-arrow {
+  padding-right: 40rpx;
+}
 
 .step-item.is-current~.step-item::before {
-  background-color: var(--signin-gray-color--);
+  background-color: var(--signUp-gray-color--);
   width: 100%;
 }
 
@@ -125,30 +154,50 @@
   height: 2rpx;
   bottom: 48rpx;
   right: 0;
-  background-color: var(--signin-gray-color--);
+  background-color: var(--signUp-gray-color--);
   z-index: 3;
 }
 
 .step-item.is-current~.step-item .dot-line {
-  background: var(--signin-gray-color--);
+  background: var(--signUp-gray-color--);
 }
 
 
 .step-item.is-current~.step-item .redbag-text {
-  background-color: var(--signin-strong-color--);
+  background-color: var(--signUp-strong-color--);
 }
 
 
-.signin-clock.zero-num .step-item .dot-line {
-  background: var(--signin-gray-color--);
+.signUp-clock.zero-num .step-item .dot-line {
+  background: var(--signUp-gray-color--);
 }
 
-.signin-clock.zero-num .step-item .redbag-text {
-  background-color: var(--signin-strong-color--);
+.signUp-clock.zero-num .step-item .redbag-text {
+  background-color: var(--signUp-strong-color--);
 }
 
-.signin-clock.zero-num .step-item::before {
-  background-color: var(--signin-gray-color--);
+.signUp-clock.zero-num .step-item::before {
+  background-color: var(--signUp-gray-color--);
 }
 
 /*  签到步骤  end */
+
+@media screen and (max-width: 500px) {
+  .step-item::before {
+    bottom: 46rpx;
+  }
+
+  .step-item.is-current::after {
+    bottom: 46rpx;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .step-item::before {
+    bottom: 48rpx;
+  }
+
+  .step-item.is-current::after {
+    bottom: 48rpx;
+  }
+}
