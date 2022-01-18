@@ -24,6 +24,10 @@ Component({
       type: Boolean,
       value: true,
     },
+    baseConfig: {
+      type: Array,
+      value: []
+    }
   },
 
   /**
@@ -56,7 +60,21 @@ Component({
     doSignTip: false, // 判断是否存在未填写地址实物奖励 - 打开弹框
     path: '', // 奖品图片地址
     type: 'integral', // 奖品类型
-    prizeRule: '' // 签到规则
+    prizeRule: '', // 签到规则
+    baseConfigs: {
+      'noPrize': {
+        type: 'noPrize',
+        imgUrl: 'https://scene-module-9gee6idgabd997ca-1306328562.tcloudbaseapp.com/signIn/images/happy.svg',
+        title: '谢谢参与'
+      },
+      'integral': {
+        type: 'integral',
+        imgUrl: 'https://scene-module-9gee6idgabd997ca-1306328562.tcloudbaseapp.com/signIn/images/gold-logo.png',
+        title: '积分'
+      }
+    }
+
+
   },
 
   /**
@@ -140,7 +158,7 @@ Component({
                 dialogStatus: false,
                 notice: objPirze.type === 'prizeChance' ? '谢谢参与' : '中奖啦',
                 type: objPirze.type,
-                path: objPirze.path,
+                path: objPirze.type === 'integral' ? this.data.baseConfigs[objPirze.type].imgUrl : objPirze.path,
                 wonCon,
                 btnTitle: objPirze.type === 'goods' ? '填写邮寄地址' : '明天提醒'
               });
@@ -270,13 +288,6 @@ Component({
           }
           // 弹出签到提醒框, 分额外奖励与积分奖励
           if (result.extraType === 'prizeChance' && result.extraPrize.length > 0) { // 有额外奖励
-            if (result.type === 'goods') { // 当日奖励为实物时提醒填写收货地址
-              this.setData({
-                doSignType: result.type,
-                doSignPath: result.prize.path,
-                doSignName: result.prize.name,
-              })
-            }
             const prizeData = [];
             result.extraPrize.forEach((objextraPrize, index) => {
               let newIndex = index;
@@ -293,9 +304,9 @@ Component({
               prizeData.push({ // 抽奖转盘数据设置
                 index: newIndex,
                 id: objextraPrize.type === 'integral' ? objextraPrize.faceValue : objextraPrize._id,
-                text: objextraPrize.name,
+                text: objextraPrize.type === 'integral' || objextraPrize.type === 'noPrize' ? this.data.baseConfigs[objextraPrize.type].title : objextraPrize.name,
                 isIntegral: objextraPrize.type,
-                path: objextraPrize.path,
+                path: objextraPrize.type === 'integral' || objextraPrize.type === 'noPrize' ? this.data.baseConfigs[objextraPrize.type].imgUrl : objextraPrize.path,
                 desc: objextraPrize.desc
               });
             });
@@ -307,7 +318,7 @@ Component({
               heartenMsg: this.data.heartenMsg,
               extraPrizeId: result.extraPrizeId,
               isSign: true,
-              path: result.prize.path || '',
+              path: result.type === 'integral' ? this.data.baseConfigs[result.type].imgUrl : result.prize.path || '',
               type: result.type
             });
           } else {
@@ -329,7 +340,8 @@ Component({
               desc: result.prize.desc,
               heartenMsg: this.data.heartenMsg,
               isSign: true,
-              type: result.type
+              type: result.type,
+              path: result.type === 'integral' ? this.data.baseConfigs[result.type].imgUrl : ''
             });
           }
         }
@@ -446,7 +458,7 @@ Component({
     async getSignRule() {
       const { result, code } = await requestApi('getSignInRule');
       this.setData({
-        prizeRule: result.rule
+        prizeRule: result.rule || ''
       });
     },
     /** 获取签到说明规则 */
@@ -465,6 +477,16 @@ Component({
   lifetimes: {
     async attached() {
       try {
+
+        if (this.properties.baseConfig.length > 0) {
+          let obj = {};
+          for (const key of this.properties.baseConfig) {
+            obj[key.type] = key
+          }
+          this.setData({
+            baseConfigs: obj
+          })
+        }
         this.setData({
           isAutoSign: this.properties.autoSign
         })
@@ -472,7 +494,7 @@ Component({
         Promise.all([await this.doSignIn(), await this.getSignInList()]);
         const remindRes = await this.getOtherMsg();
         await this.getSignRule()
-        const sucMsg = remindRes.result.length > 0 ? remindRes.result : ['os*****连续签到2天获得100积分'];
+        const sucMsg = remindRes.result.length > 0 ? remindRes.result : ['os***sy连续签到2天获得100积分'];
         const p3 = new Promise((resolve) => {
           const msg = this.getRemindMsg();
           resolve(msg);

@@ -17,22 +17,17 @@
   background-size: 100% 100%;
 }
 
-.signin-notify .signin-notify-text {
-  display: inline-block;
-  vertical-align: 0;
-  line-height: 16px;
-  margin-left: 8px;
-  color: var(--notify-color-text--);
-}
 
-.swiper_container {
-  height: 50rpx;
+.signin-notify .swiper_container {
+  height: 36rpx;
   width: 100vw;
-  margin-left: 8rpx;
+  margin-left: 10rpx;
 }
 
-.swiper_item {
-  font-size: 30rpx;
+.signin-notify .swiper_item {
+  line-height: 32rpx;
+  font-size: 28rpx;
+  vertical-align: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

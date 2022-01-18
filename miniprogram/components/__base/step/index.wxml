@@ -9,13 +9,13 @@
       <view class="icon-day ">
         <!-- 积分  -->
         <block wx:if="{{items.iconType==='star'}}">
-          <image wx:if="{{items.status==='inactivated-star'||!signInStart}}" src="https://scene-module-9gee6idgabd997ca-1306328562.tcloudbaseapp.com/signIn/images/star-gray.png" class="icon-img" />
-          <image wx:else class="icon-img" src="https://scene-module-9gee6idgabd997ca-1306328562.tcloudbaseapp.com/signIn/images/gold-logo.png" />
+          <image wx:if="{{items.status==='inactivated-star'||!signInStart}}" src="https://scene-module-9gee6idgabd997ca-1306328562.tcloudbaseapp.com/signIn/images/star-gray.png" class="signin-step-icon" />
+          <image wx:else class="signin-step-icon" src="https://scene-module-9gee6idgabd997ca-1306328562.tcloudbaseapp.com/signIn/images/gold-logo.png" />
         </block>
         <!-- 抽奖 -->
         <block wx:if="{{items.iconType==='gift'}}">
-          <image wx:if="{{items.status==='inactivated-gift'||!signInStart}}" src="https://scene-module-9gee6idgabd997ca-1306328562.tcloudbaseapp.com/signIn/images/gift-gray.png" class="icon-img" />
-          <image wx:else class="icon-img" src="https://scene-module-9gee6idgabd997ca-1306328562.tcloudbaseapp.com/signIn/images/gift-actived.png" />
+          <image wx:if="{{items.status==='inactivated-gift'||!signInStart}}" src="https://scene-module-9gee6idgabd997ca-1306328562.tcloudbaseapp.com/signIn/images/gift-gray.png" class="signin-step-icon" />
+          <image wx:else class="signin-step-icon" src="https://scene-module-9gee6idgabd997ca-1306328562.tcloudbaseapp.com/signIn/images/gift-actived.png" />
         </block>
       </view>
       <view class="dot-line"></view>

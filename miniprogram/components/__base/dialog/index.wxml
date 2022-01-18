@@ -8,7 +8,7 @@
     <view class="signin-dialog__body" wx:if="{{lottery}}">
       <view class="signin-lottery">
         <view class="signin-get-prize">
-          <image class="get-prize-logo" src="{{type === 'integral'? 'https://scene-module-9gee6idgabd997ca-1306328562.tcloudbaseapp.com/signIn/images/gold-logo.png':path}}" wx:if="{{prizeCon}}" />
+          <image class="get-prize-logo" src="{{path}}" wx:if="{{prizeCon}}" />
           <view class="signin-get-con" wx:if="{{prizeCon}}">{{prizeCon}}</view>
           <view class="signin-get-clock-num">连续签到{{clockNum}}天，额外获得抽奖1次。</view>
         </view>
@@ -18,11 +18,10 @@
           <view class="lottery-item " wx:for="{{prizeData}}" wx:key="key" wx:for-item="items">
             <view wx:if="{{items.index!=4}}" class=" lottery-item-inner  {{items.index === num ? 'selected':''}}">
               <block>
-                <image wx:if="{{items.isIntegral === 'integral' || items.isIntegral === 'noPrize'}}" class="lottery-icon" src="{{ items.isIntegral === 'integral'?'https://scene-module-9gee6idgabd997ca-1306328562.tcloudbaseapp.com/signIn/images/lottery-star.png':'https://scene-module-9gee6idgabd997ca-1306328562.tcloudbaseapp.com/signIn/images/happy.svg'}}" />
-                <image wx:else class="lottery-icon" src="{{items.path}}" />
+                <image class="lottery-icon" src="{{items.path}}" />
               </block>
               <view class="lottry-prize-text">
-                <view class="prize-text-con">{{items.text ? items.text:'谢谢参与' }}</view>
+                <view class="prize-text-con">{{items.text}}</view>
                 <view class="prize-text-con" wx:if="{{items.desc}}">
                   {{items.desc? items.desc: ''}}
                 </view>
@@ -40,7 +39,7 @@
     <view class="signin-dialog__body" wx:else>
       <view class="signin-dialog__prize">
         <block>
-          <image class="prize-logo" src="{{type === 'integral' ? 'https://scene-module-9gee6idgabd997ca-1306328562.tcloudbaseapp.com/signIn/images/gold-logo.png' : path}}" />
+          <image class="prize-logo" src="{{path}}" />
         </block>
         <view class="prize-con">{{prizeCon}}</view>
       </view>
