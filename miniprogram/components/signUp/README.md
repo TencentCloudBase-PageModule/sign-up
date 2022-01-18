@@ -30,7 +30,7 @@
 3. 点击选用，勾选关键词，确认添加模板。(每个模板显示的不同，推荐模板:服务类目生活服务 > 百货/超市/便利店的签到提醒模板)
 4. 在“我的模板”中点击模板详情，查看详细内容，确定 thing 序号
 ![模板详情](https://qcloudimg.tencent-cloud.cn/raw/94efdede217c338c7d856e80e85c6e0b.png)
-5. 前往 自定义接口创建的云函数中 page_module_tcb_sign_up/api/sendmsg 文件中按照自己申请的模板详情填写提醒
+5. 前往 自定义接口创建的云函数中 page_module_tcb_sign_up/api/set_remind.js 文件中按照自己申请的模板详情填写提醒
 
 ## FAQ
 ### 1. 找不到合适的订阅消息模板
