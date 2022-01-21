@@ -7,7 +7,7 @@
 }
 
 
-.signUp-clock-box {
+.signUp-clock .signUp-clock-box {
   overflow-y: scroll;
   display: flex;
   flex-direction: row;
@@ -15,15 +15,16 @@
   position: relative;
 }
 
-.step-item {
+.signUp-clock .signUp-step-item {
   padding: 68rpx 0 0;
   width: 90rpx;
   position: relative;
   flex-shrink: 0;
   flex-grow: 0;
+  box-sizing: content-box;
 }
 
-.step-item::before {
+.signUp-clock .signUp-step-item::before {
   content: '';
   position: absolute;
   width: 100%;
@@ -33,29 +34,29 @@
   left: 0;
 }
 
-.step-item:first-child {
+.signUp-clock .signUp-step-item:first-child {
   padding-left: 40rpx;
 }
 
-.step-item:last-child {
+.signUp-clock .signUp-step-item:last-child {
   padding-right: 40rpx;
 }
 
-.signUp-clock-box .icon-day {
+.signUp-clock .signUp-clock-box .signUp-icon-day {
   width: 36rpx;
   height: 36rpx;
   display: block;
   margin: 0 auto 12rpx;
 }
 
-.signUp-clock-box .icon-day .signUp-step-icon {
+.signUp-clock .signUp-clock-box .signUp-icon-day .signUp-step-icon {
   width: 100%;
   height: 100%;
   display: inline-block;
 }
 
 
-.signUp-clock .dot-line {
+.signUp-clock .signUp-dot-line {
   width: 10rpx;
   height: 10rpx;
   background: var(--signUp-bright-color--);
@@ -64,7 +65,7 @@
   margin: 8rpx auto 0;
 }
 
-.signUp-clock .step-days {
+.signUp-clock .signUp-step-days {
   font-size: 24rpx;
   line-height: 36rpx;
   height: 36rpx;
@@ -77,29 +78,29 @@
 
 
 
-.signUp-clock .step-item-regbag {
+.signUp-clock .signUp-step-item-regbag {
   position: absolute;
   top: 0;
   width: 90rpx;
 }
 
 
-.step-item-extra {
+.signUp-clock .signUp-step-item-extra {
   position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
 }
 
-.step-item:first-child .step-item-extra {
+.signUp-clock .signUp-step-item:first-child .signUp-step-item-extra {
   padding-left: 40rpx;
 }
 
-.step-item:last-child .step-item-extra {
+.signUp-clock .signUp-step-item:last-child .signUp-step-item-extra {
   padding-right: 40rpx;
 }
 
-.step-item-extra .redbag-text {
+.signUp-clock .signUp-step-item-extra .signUp-redbag-text {
   line-height: 36rpx;
   color: var(--text-normal-color--);
   font-size: 22rpx;
@@ -116,7 +117,7 @@
   box-sizing: border-box;
 }
 
-.step-item-arrow {
+.signUp-clock .signUp-step-item-arrow {
   position: absolute;
   top: 38rpx;
   width: 90rpx;
@@ -125,7 +126,7 @@
   transform: translateX(-50%);
 }
 
-.step-item-arrow .red-arrow {
+.signUp-clock .signUp-step-item-arrow .signUp-red-arrow {
   width: 18rpx;
   height: 16rpx;
   margin: 0 auto;
@@ -134,20 +135,20 @@
   background-repeat: no-repeat;
 }
 
-.step-item:first-child .step-item-arrow {
+.signUp-clock .signUp-step-item:first-child .signUp-step-item-arrow {
   padding-left: 40rpx;
 }
 
-.step-item:last-child .step-item-arrow {
+.signUp-clock .signUp-step-item:last-child .signUp-step-item-arrow {
   padding-right: 40rpx;
 }
 
-.step-item.is-current~.step-item::before {
+.signUp-clock .signUp-step-item.is-current~.signUp-step-item::before {
   background-color: var(--signUp-gray-color--);
   width: 100%;
 }
 
-.step-item.is-current::after {
+.signUp-clock .signUp-step-item.is-current::after {
   content: '';
   position: absolute;
   width: 40rpx;
@@ -158,46 +159,46 @@
   z-index: 3;
 }
 
-.step-item.is-current~.step-item .dot-line {
+.signUp-clock .signUp-step-item.is-current~.signUp-step-item .signUp-dot-line {
   background: var(--signUp-gray-color--);
 }
 
 
-.step-item.is-current~.step-item .redbag-text {
+.signUp-clock .signUp-step-item.is-current~.signUp-step-item .signUp-redbag-text {
   background-color: var(--signUp-strong-color--);
 }
 
 
-.signUp-clock.zero-num .step-item .dot-line {
+.signUp-clock.zero-num .signUp-step-item .signUp-dot-line {
   background: var(--signUp-gray-color--);
 }
 
-.signUp-clock.zero-num .step-item .redbag-text {
+.signUp-clock.zero-num .signUp-step-item .signUp-redbag-text {
   background-color: var(--signUp-strong-color--);
 }
 
-.signUp-clock.zero-num .step-item::before {
+.signUp-clock.zero-num .signUp-step-item::before {
   background-color: var(--signUp-gray-color--);
 }
 
 /*  签到步骤  end */
 
 @media screen and (max-width: 500px) {
-  .step-item::before {
+  .signUp-clock .signUp-step-item::before {
     bottom: 46rpx;
   }
 
-  .step-item.is-current::after {
+  .signUp-clock .signUp-step-item.is-current::after {
     bottom: 46rpx;
   }
 }
 
 @media screen and (max-width: 400px) {
-  .step-item::before {
+  .signUp-clock .signUp-step-item::before {
     bottom: 48rpx;
   }
 
-  .step-item.is-current::after {
+  .signUp-clock .signUp-step-item.is-current::after {
     bottom: 48rpx;
   }
 }

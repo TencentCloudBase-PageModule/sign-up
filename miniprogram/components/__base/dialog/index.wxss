@@ -27,7 +27,7 @@
   display: block;
 }
 
-.signUp-dialog__inner {
+.signUp-dialog .signUp-dialog__inner {
   padding: 0 68rpx 44rpx;
   background: var(--layout-bg--);
   border-radius: 20rpx;
@@ -35,11 +35,11 @@
   z-index: 3;
 }
 
-.signUp-dialog__inner.lottery-status {
+.signUp-dialog .signUp-dialog__inner.signUp-lottery-status {
   padding: 0 32rpx 32rpx;
 }
 
-.signUp-dialog-bg {
+.signUp-dialog .signUp-dialog-bg {
   position: absolute;
   width: 100%;
   height: 420rpx;
@@ -50,12 +50,12 @@
   background-size: 100% auto;
 }
 
-.signUp-dialog__header {
+.signUp-dialog .signUp-dialog__header {
   padding: 46rpx 44rpx 52rpx;
   text-align: center;
 }
 
-.signUp-dialog-title {
+.signUp-dialog .signUp-dialog-title {
   line-height: 100rpx;
   font-size: 72rpx;
   color: var(--layout-bg--);
@@ -63,12 +63,12 @@
   z-index: 3;
 }
 
-.signUp-dialog__body {
+.signUp-dialog .signUp-dialog__body {
   position: relative;
   z-index: 3;
 }
 
-.signUp-dialog__prize {
+.signUp-dialog .signUp-dialog__prize {
   border-radius: 20rpx;
   padding: 40rpx 32rpx 52rpx;
   text-align: center;
@@ -76,34 +76,34 @@
   box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.05);
 }
 
-.signUp-dialog__prize .prize-logo {
+.signUp-dialog .signUp-dialog__prize .signUp-prize-logo {
   width: 36px;
   height: 36px;
   display: block;
   margin: 0 auto;
 }
 
-.signUp-dialog__prize .prize-logo {
+.signUp-dialog .signUp-dialog__prize .signUp-prize-logo {
   width: 36px;
   height: 36px;
 }
 
-.signUp-dialog__prize .prize-con {
+.signUp-dialog .signUp-dialog__prize .signUp-prize-con {
   line-height: 68rpx;
   font-size: 48rpx;
   margin-top: 12rpx;
   color: var(--text-tit-color--);
 }
 
-.signUp-get-clock-num {
+.signUp-dialog .signUp-get-clock-num {
   font-size: 32rpx;
 }
 
-.signUp-dialog__prize .prize-con.redbag-lucre {
+.signUp-dialog .signUp-dialog__prize .signUp-prize-con.signUp-redbag-lucre {
   font-size: 36rpx;
 }
 
-.signUp-dialog__prize-next {
+.signUp-dialog .signUp-dialog__prize-next {
   font-size: 28rpx;
   font-weight: 500;
   line-height: 40rpx;
@@ -112,7 +112,7 @@
   color: var(--text-label-color--);
 }
 
-.signUp-dialog-btn {
+.signUp-dialog .signUp-dialog-btn {
   margin-top: 40rpx;
   height: 68rpx;
   width: 100% !important;
@@ -126,7 +126,7 @@
 
 
 
-.signUp-lottery {
+.signUp-dialog .signUp-lottery {
   width: 100%;
   border-radius: 10px;
   background: var(--layout-bg--);
@@ -139,18 +139,18 @@
   color: var(--text-danger-color--);
 }
 
-.signUp-get-prize {
+.signUp-dialog .signUp-get-prize {
   text-align: center;
 }
 
-.get-prize-logo {
+.signUp-dialog .signUp-get-prize-logo {
   width: 18px;
   height: 18px;
   display: inline-block;
   vertical-align: super;
 }
 
-.signUp-get-con {
+.signUp-dialog .signUp-get-con {
   display: inline-block;
   vertical-align: middle;
   margin-left: 16rpx;
@@ -159,7 +159,7 @@
   margin-bottom: 40rpx;
 }
 
-.signUp-lottery-text {
+.signUp-dialog .signUp-lottery-text {
   margin-top: 24rpx;
   line-height: 50rpx;
   font-size: 32rpx;
@@ -167,7 +167,7 @@
   color: var(--text-normal-color--);
 }
 
-.lottery-box {
+.signUp-dialog .signUp-lottery-box {
   width: 604rpx;
   height: 604rpx;
   background-image: url(https://scene-module-9gee6idgabd997ca-1306328562.tcloudbaseapp.com/signIn/images/lottery-bg.svg);
@@ -179,7 +179,7 @@
   box-sizing: border-box;
 }
 
-.lottery-inner {
+.signUp-dialog .signUp-lottery-inner {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -187,7 +187,7 @@
   justify-content: space-between;
 }
 
-.lottery-box .lottery-item {
+.signUp-dialog .signUp-lottery-box .signUp-lottery-item {
   display: inline-block;
   vertical-align: middle;
   height: 180rpx;
@@ -195,11 +195,11 @@
   margin-bottom: 8rpx;
 }
 
-.lottery-box .lottery-item:nth-last-child(-n+3) {
+.signUp-dialog .signUp-lottery-box .signUp-lottery-item:nth-last-child(-n+3) {
   margin-bottom: 0;
 }
 
-.lottery-item-inner {
+.signUp-dialog .signUp-lottery-item-inner {
   background: var(--layout-bg--);
   height: 100%;
   border-radius: 20rpx;
@@ -209,7 +209,7 @@
   flex-direction: column;
 }
 
-.lottery-icon {
+.signUp-dialog .signUp-lottery-icon {
   width: 60rpx;
   height: 60rpx;
   background-size: 100% 100%;
@@ -218,7 +218,7 @@
 }
 
 
-.lottry-prize-text {
+.signUp-dialog .signUp-lottry-prize-text {
   color: var(--text-tit-color--);
   line-height: 36rpx;
   font-size: 24rpx;
@@ -226,7 +226,7 @@
   text-align: center;
 }
 
-.lottry-prize-text .prize-text-con {
+.signUp-dialog .signUp-lottry-prize-text .signUp-prize-text-con {
   text-align: center;
   line-height: 36rpx;
   font-size: 24rpx;
@@ -236,15 +236,15 @@
   width: 162rpx;
 }
 
-.lottery-item-inner.selected {
+.signUp-dialog .signUp-lottery-item-inner.selected {
   background: var(--lottery-selectd-bg--);
 }
 
-.lottery-item-inner.play-action {
+.signUp-dialog .signUp-lottery-item-inner.signUp-play-action {
   background: var(--lottery-start-bg--);
 }
 
-.lottery-item-action-text {
+.signUp-dialog .signUp-lottery-item-action-text {
   width: 104rpx;
   height: 112rpx;
   line-height: 56rpx;
@@ -253,20 +253,29 @@
   font-weight: 700;
 }
 
-.signUp-dialog-goods-title {
+.signUp-dialog .signUp-dialog-goods-title {
   font-size: 22rpx;
   margin-top: 8rpx;
   padding: 0 12rpx;
   font-weight: 500;
 }
 
-.signUp-dialog-goods-desc {
+.signUp-dialog .signUp-dialog-goods-tips {
+  display: flex;
+}
+
+.signUp-dialog .signUp-dialog-goods-tips__symbol {
+  font-size: 20rpx;
+  padding: 0 12rpx;
+}
+
+.signUp-dialog .signUp-dialog-goods-desc {
   font-size: 20rpx;
   color: red;
   font-weight: 500;
 }
 
-.sign-is-sign-tips {
+.signUp-dialog .sign-is-sign-tips {
   color: red;
   font-size: 30rpx;
   margin-top: 12rpx;

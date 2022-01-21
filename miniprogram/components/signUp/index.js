@@ -167,7 +167,7 @@ Component({
           x = x + 1;
           if (x === initial) { // 到结尾了，设置中奖的奖品,中奖的是第几个
             that.setData({
-              num: that.countPrizeGoods(objPirze),
+              num: that.countPrizeGoods(objPirze) || 0,
             });
             setTimeout(() => {
               // 弹出中奖提醒
@@ -459,6 +459,10 @@ Component({
             }
           },
           fail(err) {
+            if (that.data.temId === '') {
+              that.triggerEvent('remind', { err: '订阅消息模板id未填写' });
+              return
+            }
             that.triggerEvent('remind', 'err', err);
             wx.showToast({
               title: `订阅失败\r\n请检查模板id`,

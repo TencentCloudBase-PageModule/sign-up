@@ -1,5 +1,5 @@
 <view class="signUp-dialog {{show?'show':''}}">
-  <view class="signUp-dialog__inner {{isLottery?'lottery-status':''}}">
+  <view class="signUp-dialog__inner {{isLottery?'signUp-lottery-status':''}}">
     <view class="signUp-dialog-bg" style="background-image:url({{dialogBg}})"></view>
     <view class="signUp-dialog__header">
       <view class="signUp-dialog-title">{{signStatus}}</view>
@@ -8,27 +8,27 @@
     <view class="signUp-dialog__body" wx:if="{{lottery}}">
       <view class="signUp-lottery">
         <view class="signUp-get-prize">
-          <image class="get-prize-logo" src="{{path}}" wx:if="{{prizeCon}}" />
+          <image class="signUp-get-prize-logo" src="{{path}}" wx:if="{{prizeCon}}" />
           <view class="signUp-get-con" wx:if="{{prizeCon}}">{{prizeCon}}</view>
           <view class="signUp-get-clock-num">连续签到{{clockNum}}天，额外获得抽奖1次。</view>
         </view>
       </view>
-      <view class="lottery-box">
-        <view class="lottery-inner">
-          <view class="lottery-item " wx:for="{{prizeData}}" wx:key="key" wx:for-item="items">
-            <view wx:if="{{items.index!=4}}" class=" lottery-item-inner  {{items.index === num ? 'selected':''}}">
+      <view class="signUp-lottery-box">
+        <view class="signUp-lottery-inner">
+          <view class="signUp-lottery-item " wx:for="{{prizeData}}" wx:key="key" wx:for-item="items">
+            <view wx:if="{{items.index!=4}}" class=" signUp-lottery-item-inner  {{items.index === num ? 'selected':''}}">
               <block>
-                <image class="lottery-icon" src="{{items.path}}" />
+                <image class="signUp-lottery-icon" src="{{items.path}}" />
               </block>
-              <view class="lottry-prize-text">
-                <view class="prize-text-con">{{items.text}}</view>
-                <view class="prize-text-con" wx:if="{{items.desc}}">
+              <view class="signUp-lottry-prize-text">
+                <view class="signUp-prize-text-con">{{items.text}}</view>
+                <view class="signUp-prize-text-con" wx:if="{{items.desc}}">
                   {{items.desc? items.desc: ''}}
                 </view>
               </view>
             </view>
-            <view wx:else class="lottery-item-inner play-action" bind:tap="start">
-              <view class="lottery-item-action-text">{{items.text}}</view>
+            <view wx:else class="signUp-lottery-item-inner signUp-play-action" bind:tap="start">
+              <view class="signUp-lottery-item-action-text">{{items.text}}</view>
             </view>
           </view>
         </view>
@@ -39,17 +39,17 @@
     <view class="signUp-dialog__body" wx:else>
       <view class="signUp-dialog__prize">
         <block>
-          <image class="prize-logo" src="{{path}}" />
+          <image class="signUp-prize-logo" src="{{path}}" />
         </block>
-        <view class="prize-con">{{prizeCon}}</view>
+        <view class="signUp-prize-con">{{prizeCon}}</view>
       </view>
       <view class="signUp-dialog__prize-next" wx:if="{{isDesc}}">{{desc}}</view>
       <block wx:if="{{type === 'goods'}}">
         <view class="signUp-dialog-goods-title">实物奖品系统不能自动发放，请准确填写真实有效的邮寄地址</view>
-        <view style="display: flex;">
-          <view style="font-size: 20rpx;padding: 0 12rpx;">(</view>
+        <view class="signUp-dialog-goods-tips">
+          <view class="signUp-dialog-goods-tips__symbol">(</view>
           <view class="signUp-dialog-goods-desc">超过24小时未填写对应收货信息，视为放弃</view>
-          <view style="font-size: 20rpx;padding: 0 12rpx;">)</view>
+          <view class="signUp-dialog-goods-tips__symbol">)</view>
         </view>
       </block>
       <button class="signUp-dialog-btn " size="default" style="background:{{btnBgColor}}" bind:tap="subscription">

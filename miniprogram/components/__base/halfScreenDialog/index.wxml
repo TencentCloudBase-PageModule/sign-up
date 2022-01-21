@@ -3,7 +3,7 @@
 <view class="signUp-half-screen-dialog {{halfShow?'signUp-half-screen-dialog_show':''}}">
   <view class="signUp-half-screen-dialog__hd">
     <view class="signUp-half-screen-dialog__hd__side" bind:tap="handleCloseHalfDialog">
-      <image class="icon-close" src="https://scene-module-9gee6idgabd997ca-1306328562.tcloudbaseapp.com/signIn/images/icon-close.svg" />
+      <image class="signUp-icon-close" src="https://scene-module-9gee6idgabd997ca-1306328562.tcloudbaseapp.com/signIn/images/icon-close.svg" />
     </view>
     <view class="signUp-half-screen-dialog__hd__main">
       <strong class="signUp-half-screen-dialog__title">签到规则</strong>

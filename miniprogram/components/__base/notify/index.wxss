@@ -8,7 +8,7 @@
   align-items: center;
 }
 
-.signUp-notify .icon-notify {
+.signUp-notify .signUp-icon-notify {
   width: 16px;
   height: 16px;
   display: inline-block;
@@ -18,13 +18,13 @@
 }
 
 
-.signUp-notify .swiper_container {
+.signUp-notify .signUp-swiper_container {
   height: 36rpx;
   width: 100vw;
   margin-left: 10rpx;
 }
 
-.signUp-notify .swiper_item {
+.signUp-notify .signUp-swiper_item {
   line-height: 32rpx;
   font-size: 28rpx;
   vertical-align: 0;

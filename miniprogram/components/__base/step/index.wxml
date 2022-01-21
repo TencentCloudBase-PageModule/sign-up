@@ -1,14 +1,14 @@
 <view class="signUp-clock {{signInStart?'':'zero-num'}}">
   <view class="signUp-clock-box">
     <!-- 连续打卡次数 clockNum  -->
-    <view class="step-item {{clockNum<=items.id?'is-current':''}} " wx:for="{{datas}}" wx:key="key" wx:for-item="items" bind:tap="handleShowDialog" data-status="{{items.status}}">
-      <view class="step-item-extra" wx:if="{{items.iconType==='gift'}}">
-        <view class="redbag-text">{{items.extraDesc}}</view>
+    <view class="signUp-step-item {{clockNum<=items.id?'is-current':''}} " wx:for="{{datas}}" wx:key="key" wx:for-item="items" bind:tap="handleShowDialog" data-status="{{items.status}}">
+      <view class="signUp-step-item-extra" wx:if="{{items.iconType==='gift'}}">
+        <view class="signUp-redbag-text">{{items.extraDesc}}</view>
       </view>
-      <view class="step-item-arrow" wx:if="{{items.iconType==='gift'}}">
-        <view class="red-arrow"></view>
+      <view class="signUp-step-item-arrow" wx:if="{{items.iconType==='gift'}}">
+        <view class="signUp-red-arrow"></view>
       </view>
-      <view class="icon-day ">
+      <view class="signUp-icon-day ">
         <!-- 积分  -->
         <block wx:if="{{items.iconType==='star'}}">
           <image wx:if="{{items.status==='inactivated-star'||!signInStart}}" src="https://scene-module-9gee6idgabd997ca-1306328562.tcloudbaseapp.com/signIn/images/star-gray.png" class="signUp-step-icon" />
@@ -20,8 +20,8 @@
           <image wx:else class="signUp-step-icon" src="https://scene-module-9gee6idgabd997ca-1306328562.tcloudbaseapp.com/signIn/images/gift-actived.png" />
         </block>
       </view>
-      <view class="dot-line"></view>
-      <view class="step-days">{{items.days}}</view>
+      <view class="signUp-dot-line"></view>
+      <view class="signUp-step-days">{{items.days}}</view>
     </view>
   </view>
 </view>

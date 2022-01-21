@@ -1,9 +1,9 @@
-# sign-up 签到组件
+# signUp 签到组件
 
 ## 代码演示
 
 ```js
-<sign-up temId="eJ8NG1u50h13GiwfDpLtWBt42XekeY19yzmn5hPFr9o" page="pages/index/index" autoSign="true" baseConfig = "{{[
+<signUp temId="eJ8NG1u50h13GiwfDpLtWBt42XekeY19yzmn5hPFr9o" page="pages/index/index" autoSign="true" baseConfig = "{{[
   {
     type: 'noPrize',
     imgUrl: 'https://scene-module-9gee6idgabd997ca-1306328562.tcloudbaseapp.com/signIn/images/happy.svg',
@@ -13,7 +13,7 @@
     type: 'integral',
     imgUrl: 'https://scene-module-9gee6idgabd997ca-1306328562.tcloudbaseapp.com/signIn/images/gold-logo.png',
     title: '积分'
-      }]}}"></sign-up>
+      }]}}"></signUp>
 ```
 
 ## 组件属性
@@ -29,11 +29,11 @@
 | baseConfig[].title  | 自定义积分、无奖励名称                | string   | integral:'积分' \|  noPrize:'谢谢参与' |
 
 ## 事件属性
-| 属性                | 说明                                  | 参数 |
-| ------------------- | ------------------------------------- | ------------------- |
-| dosign            | 返回签到结果                      | 成功信息、失败信息、已签到状态 |
-| doprize               | 返回抽奖结果信息               | 奖品类型（包括 无奖励），奖品名称 等信息 |
-| remind                | 返回订阅消息是否成功            | 成功、失败 |
+| 属性                | 说明                                  | 参数 | 描述 |
+| ------------------- | ------------------------------------- | ------------------- | ------------------- |
+| dosign            | 返回签到结果                      | {isValid: true \| false , doSignInfo} | 成功信息、失败信息、已签到状态 |
+| doprize               | 返回抽奖结果信息               | {type: string,path: string,name:string,desc: string} | 奖品类型（包括 无奖励），奖品名称 等信息 |
+| remind                | 返回订阅消息是否成功            | 'accept' \| 'err' | 成功、失败 |
 
 ## 代码示例
 ### dosign
@@ -44,30 +44,6 @@
 Page({
   data: {},
   signResult: function (e) {
-    console.log(e.detail)
-  }
-})
-```
-### doprize
-```
-<SignUp bind:doPrize="doPrizeRes" ></SignUp>
-```
-```js
-Page({
-  data: {},
-  doPrizeRes: function (e) {
-    console.log(e.detail)
-  }
-})
-```
-### remind
-```
-<SignUp bind:remind="onRemindChange" ></SignUp>
-```
-```js
-Page({
-  data: {},
-  onRemindChange: function (e) {
     console.log(e.detail)
   }
 })
