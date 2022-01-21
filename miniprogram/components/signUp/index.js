@@ -73,7 +73,8 @@ Component({
         title: '积分'
       }
     },
-    timer: null
+    timer: null,
+    desc: ''
 
 
   },
@@ -326,7 +327,7 @@ Component({
             this.setData({ // 有抽奖机会
               dialogStatus: true,
               dialogInfo: 'activated-gift',
-              desc: result.type === 'integral' ? result.prize.desc : result.prize.name,
+              desc: result.type === 'integral' ? result.prize.desc || '' : result.prize.name || '',
               prizeData,
               heartenMsg: this.data.heartenMsg,
               extraPrizeId: result.extraPrizeId,
