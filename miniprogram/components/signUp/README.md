@@ -3,7 +3,7 @@
 ## 代码演示
 
 ```js
-<signUp temId="eJ8NG1u50h13GiwfDpLtWBt42XekeY19yzmn5hPFr9o" page="pages/index/index" autoSign="true" baseConfig = "{{[
+<signUp temId="eJ8NG1u50h13GiwfDpLtWBt42XekeY19yzmn5hPFr9o" page="pages/index/index" autoSign="{{true}}" baseConfig = "{{[
   {
     type: 'noPrize',
     imgUrl: 'https://scene-module-9gee6idgabd997ca-1306328562.tcloudbaseapp.com/signIn/images/happy.svg',
