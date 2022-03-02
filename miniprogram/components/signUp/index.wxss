@@ -3,7 +3,7 @@
   color: var(--text-danger-color--);
 }
 
-.signin-container {
+.signUp-container {
   /* 页面背景和颜色 */
   --layout-bg--: #fff;
   --text-danger-color--: #EF4028;
@@ -13,9 +13,9 @@
   --text-normal-color--: #000;
   --text-tit-color--: #333;
   /* 签到模块色值 */
-  --signin-bright-color--: #FFCC00;
-  --signin-gray-color--: #E9E9E9;
-  --signin-strong-color--: #f1f1f1;
+  --signUp-bright-color--: #FFCC00;
+  --signUp-gray-color--: #E9E9E9;
+  --signUp-strong-color--: #f1f1f1;
   /* 消息提醒模块 */
   --notify-color-text--: #FF6600;
   --notify-color-bg--: #FFF8DB;
@@ -32,14 +32,14 @@
 
 }
 
-.signin-container {
+.signUp-container {
   border-radius: 20rpx;
   padding: 24rpx 16rpx;
   background-color: var(--layout-bg--);
 
 }
 
-.signin-hd-tit {
+.signUp-hd-tit {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -47,7 +47,7 @@
 }
 
 
-.signin-hd__record {
+.signUp-hd__record {
   flex: 1 1 auto;
   min-width: 20px;
   color: var(--text-tit-color--);
@@ -58,7 +58,7 @@
 
 
 
-.signin-hd-tit .rule {
+.signUp-hd-tit .rule {
   font-size: 24rpx;
   font-weight: 500;
   display: inline-block;
@@ -68,7 +68,7 @@
   color: var(--text-label-color--);
 }
 
-.signin-desc {
+.signUp-desc {
   display: flex;
   flex-direction: row;
   margin-top: 16rpx;
@@ -81,17 +81,17 @@
   color: var(--text-tit-color--);
 }
 
-.signin-btn {
+.signUp-btn {
   margin-top: 40rpx;
   width: 100%;
 }
 
-.signin-is-btn {
+.signUp-is-btn {
   background-color: var(--is-sign--);
   color: #fff;
 }
 
-.signin--not-btn {
+.signUp--not-btn {
   background-color: var(--not-sign--);
   color: #fff;
 }

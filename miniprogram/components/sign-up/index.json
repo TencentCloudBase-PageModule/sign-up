@@ -1,9 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "signIn-step": "../__base/step",
-    "signIn-notify": "../__base/notify",
-    "signIn-dialog": "../__base/dialog",
-    "signIn-halfSreenDialog": "../__base/halfScreenDialog"
-  }
-}

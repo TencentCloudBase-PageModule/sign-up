@@ -10,9 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "wx-server-sdk": "^2.5.3",
-    "@cloudbase/lcap-business-sdk": "*",
     "joi": "*",
     "lodash": "*",
-    "@cloudbase/page-module": "*"
+    "@cloudbase/page-module": "^1.3.0-beta.2"
   }
 }

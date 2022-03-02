@@ -1,0 +1,24 @@
+.history
+
+# Shell Env
+.env
+
+# Node.js
+node_modules/
+
+# Temp Folder
+tmp/
+
+# Logs
+logs
+*.log
+
+# Cloudbase
+TCBSAM.yaml
+
+package-lock.json
+package-lock.json.*
+
+dist/
+
+.DS_Store

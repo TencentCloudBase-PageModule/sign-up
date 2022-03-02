@@ -24,6 +24,10 @@ Component({
       type: Boolean,
       value: true,
     },
+    baseConfig: {
+      type: Array,
+      value: []
+    }
   },
 
   /**
@@ -56,7 +60,23 @@ Component({
     doSignTip: false, // 判断是否存在未填写地址实物奖励 - 打开弹框
     path: '', // 奖品图片地址
     type: 'integral', // 奖品类型
-    prizeRule: '' // 签到规则
+    prizeRule: '', // 签到规则
+    baseConfigs: {
+      'noPrize': {
+        type: 'noPrize',
+        imgUrl: 'https://scene-module-9gee6idgabd997ca-1306328562.tcloudbaseapp.com/signIn/images/happy.svg',
+        title: '谢谢参与'
+      },
+      'integral': {
+        type: 'integral',
+        imgUrl: 'https://scene-module-9gee6idgabd997ca-1306328562.tcloudbaseapp.com/signIn/images/gold-logo.png',
+        title: '积分'
+      }
+    },
+    timer: null,
+    desc: ''
+
+
   },
 
   /**
@@ -86,16 +106,34 @@ Component({
         }
       }
     },
+    /**
+     * 防抖函数
+     * @param {*} delay - 延迟时间
+     */
+    async debounce(delay) {
+      const timer = setTimeout(() => { }, delay);
+      this.setData({
+        timer
+      })
+    },
     /** 响应抽奖点击动作 */
     async startPrize() {
-      if (!this.data.flag) {
+      const position = [1, 2, 4, 5, 8, 7, 6, 3, 0];
+      if (!this.data.flag && !this.data.timer) {
+        this.debounce(1000000); // 防止多次点击抽奖
         this.setData({
           flag: true,
-
         });
+        for (let i = 0; i < position.length; i++) {
+          setTimeout(() => {
+            this.setData({
+              num: position[i],
+            });
+          }, i * 150)
+        }
         const objPrize = await this.getDoPrize();
         if (Object.values(objPrize).length > 0) {
-          await this.PrizeAnimation(objPrize);
+          return await this.PrizeAnimation(objPrize);
         }
       }
     },
@@ -115,10 +153,10 @@ Component({
       const initial = Math.floor(Math.random() * (35 - 20) + 20);
       // 去除选中样式
       const that = this;
-      let x = 0;
       // position用于定位每一个抽奖格;
       const position = [0, 1, 2, 4, 5, 8, 7, 6, 3];
-      const currentNum = initial % 9;
+      // 获取当前显示抽奖格子
+      let x = position.indexOf(this.data.num) + 1;
       for (let i = 0; i < initial; i++) {
         // eslint-disable-next-line no-loop-func
         setTimeout(() => {
@@ -129,7 +167,7 @@ Component({
           x = x + 1;
           if (x === initial) { // 到结尾了，设置中奖的奖品,中奖的是第几个
             that.setData({
-              num: that.countPrizeGoods(objPirze),
+              num: that.countPrizeGoods(objPirze) || 0,
             });
             setTimeout(() => {
               // 弹出中奖提醒
@@ -140,14 +178,21 @@ Component({
                 dialogStatus: false,
                 notice: objPirze.type === 'prizeChance' ? '谢谢参与' : '中奖啦',
                 type: objPirze.type,
-                path: objPirze.path,
+                path: objPirze.type === 'integral' ? this.data.baseConfigs[objPirze.type].imgUrl : objPirze.path,
                 wonCon,
                 btnTitle: objPirze.type === 'goods' ? '填写邮寄地址' : '明天提醒'
               });
+              this.triggerEvent('doPrize', {
+                type: objPirze.type,
+                path: objPirze.type === 'integral' ? this.data.baseConfigs[objPirze.type].imgUrl : objPirze.path,
+                name: objPirze.name || 'noPrize',
+                desc: objPirze.desc || ''
+              })
             }, 10);
           }
         }, i * 150);
       }
+      clearTimeout(this.data.timer);
     },
 
     /**
@@ -174,25 +219,9 @@ Component({
       if (code !== 0) {
         throw msg;
       }
-      // 签到进度显示抽奖名称样式调整值
-      const leftRpx = {
-        '3': 9,
-        '4': -3,
-        '5': -15,
-        '6': -28,
-        '7': -40
-      }
-      const firstLeft = {
-        '3': 35,
-        '4': 28,
-        '5': 20,
-        '6': 12,
-        '7': 3
-      }
       const arrSignInTimes = [];
       let clockNum = 0;
       let extraDesc = '';
-      let descLeft = 0;
       result.forEach((objSignInList) => {
         let status = objSignInList.isSignIn === 1 ? 'activated-star' : 'inactivated-star';
         let iconType = 'star';
@@ -202,11 +231,10 @@ Component({
               extraDesc = `抽${key.name}`;
               break;
             }
-            extraDesc = `谢谢参与`;
+            extraDesc = this.data.baseConfig['noPrize'].title;
           }
           iconType = 'gift';
           status = objSignInList.isSignIn === 1 ? 'activated-gift' : 'inactivated-gift';
-          descLeft = objSignInList.day === 1 ? extraDesc.length < 8 ? `${firstLeft[String(extraDesc.length)]}%` : '-1%' : `${leftRpx[String(extraDesc.length)]}%` || '-48%';
         }
         if (objSignInList.isSignIn === 1) {
           clockNum = clockNum + 1;
@@ -217,7 +245,6 @@ Component({
           iconType,
           extraDesc,
           status,
-          descLeft,
         });
 
       });
@@ -246,6 +273,7 @@ Component({
         autoSign: signStatus || this.properties.autoSign
       });
       try {
+
         if (code !== 0) {
           if (code === 5001) {
             this.setData({
@@ -254,12 +282,16 @@ Component({
             wx.showToast({
               title: msg,
             });
+            this.triggerEvent('doSign', { isValid: true });
+
           } else {
+            this.triggerEvent('doSign', { code, result });
             wx.showToast({
               title: '今日已签到',
             });
           }
         } else {
+          this.triggerEvent('doSign', result ? result : { isValid: true });
           if (!this.properties.autoSign && result.status === 2) {
             return this.setData({
               isSign: result.isValid,
@@ -270,13 +302,6 @@ Component({
           }
           // 弹出签到提醒框, 分额外奖励与积分奖励
           if (result.extraType === 'prizeChance' && result.extraPrize.length > 0) { // 有额外奖励
-            if (result.type === 'goods') { // 当日奖励为实物时提醒填写收货地址
-              this.setData({
-                doSignType: result.type,
-                doSignPath: result.prize.path,
-                doSignName: result.prize.name,
-              })
-            }
             const prizeData = [];
             result.extraPrize.forEach((objextraPrize, index) => {
               let newIndex = index;
@@ -293,21 +318,21 @@ Component({
               prizeData.push({ // 抽奖转盘数据设置
                 index: newIndex,
                 id: objextraPrize.type === 'integral' ? objextraPrize.faceValue : objextraPrize._id,
-                text: objextraPrize.name,
+                text: objextraPrize.type === 'integral' || objextraPrize.type === 'noPrize' ? this.data.baseConfigs[objextraPrize.type].title : objextraPrize.name,
                 isIntegral: objextraPrize.type,
-                path: objextraPrize.path,
+                path: objextraPrize.type === 'integral' || objextraPrize.type === 'noPrize' ? this.data.baseConfigs[objextraPrize.type].imgUrl : objextraPrize.path,
                 desc: objextraPrize.desc
               });
             });
             this.setData({ // 有抽奖机会
               dialogStatus: true,
               dialogInfo: 'activated-gift',
-              desc: result.type === 'integral' ? result.prize.desc : result.prize.name,
+              desc: result.type === 'integral' ? result.prize.desc || '' : result.prize.name || '',
               prizeData,
               heartenMsg: this.data.heartenMsg,
               extraPrizeId: result.extraPrizeId,
               isSign: true,
-              path: result.prize.path || '',
+              path: result.type === 'integral' ? this.data.baseConfigs[result.type].imgUrl : result.prize.path || '',
               type: result.type
             });
           } else {
@@ -329,7 +354,8 @@ Component({
               desc: result.prize.desc,
               heartenMsg: this.data.heartenMsg,
               isSign: true,
-              type: result.type
+              type: result.type,
+              path: result.type === 'integral' ? this.data.baseConfigs[result.type].imgUrl : ''
             });
           }
         }
@@ -428,11 +454,16 @@ Component({
           tmplIds: [that.properties.temId],
           success(res) {
             if (res[that.properties.temId] === 'accept') {
+              that.triggerEvent('remind', 'accept');
               that.setRemind();
             }
-
           },
           fail(err) {
+            if (that.data.temId === '') {
+              that.triggerEvent('remind', { err: '订阅消息模板id未填写' });
+              return
+            }
+            that.triggerEvent('remind', 'err', err);
             wx.showToast({
               title: `订阅失败\r\n请检查模板id`,
               icon: 'none',
@@ -446,7 +477,7 @@ Component({
     async getSignRule() {
       const { result, code } = await requestApi('getSignInRule');
       this.setData({
-        prizeRule: result.rule
+        prizeRule: result.rule || ''
       });
     },
     /** 获取签到说明规则 */
@@ -465,6 +496,16 @@ Component({
   lifetimes: {
     async attached() {
       try {
+
+        if (this.properties.baseConfig.length > 0) {
+          let obj = {};
+          for (const key of this.properties.baseConfig) {
+            obj[key.type] = key
+          }
+          this.setData({
+            baseConfigs: obj
+          })
+        }
         this.setData({
           isAutoSign: this.properties.autoSign
         })
@@ -472,7 +513,7 @@ Component({
         Promise.all([await this.doSignIn(), await this.getSignInList()]);
         const remindRes = await this.getOtherMsg();
         await this.getSignRule()
-        const sucMsg = remindRes.result.length > 0 ? remindRes.result : ['os*****连续签到2天获得100积分'];
+        const sucMsg = remindRes.result.length > 0 ? remindRes.result : ['os***sy连续签到2天获得100积分'];
         const p3 = new Promise((resolve) => {
           const msg = this.getRemindMsg();
           resolve(msg);
