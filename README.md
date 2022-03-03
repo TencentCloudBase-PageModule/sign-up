@@ -2,7 +2,7 @@
 ## 概述
 签到打卡的前端源码组件，支持7天连续签到，连签X天支持抽奖。
 
-![](https://qcloudimg.tencent-cloud.cn/raw/37f10ce88b497675806e0be0e8a1610b.png)
+![](https://qcloudimg.tencent-cloud.cn/raw/1b92253712fe5a274d69e6952b15393d.png)
 
 ## 资源
 1. [小程序源码组件](./miniprogram/)
