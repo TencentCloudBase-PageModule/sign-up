@@ -1,5 +1,5 @@
 const { PageModule } = require('@cloudbase/page-module');
-const pageModule = new PageModule('tcb:sign_up');
+const pageModule = new PageModule('sign-up');
 const requestApi = async (methodName, params = {}) => {
   const objInfo = await pageModule.callMethod(methodName, params);
   const { result: { code, data } } = objInfo;
