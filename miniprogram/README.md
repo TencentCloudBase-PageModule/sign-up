@@ -25,3 +25,12 @@
 
 ## 组件介绍
 1. 签到组件 [SignUp](./components/signUp/README.md)
+
+## 注意事项
+1. 需要在详情中本地设置开启将JS编译成ES5。
+## 上手介绍
+1. 手动签到后，第二天才可以签到，为了方便进行验证。我们在服务端接口中提供了相应接口以供测试
+   1. delSignIn 删除签到记录，删除用户指定日期记录
+   2. reSignIn 补签，会创建输入日期到当日的前一天的连续签到记录无签到奖励只有记录
+2. 在首页位置可放置签到入口，没有签到则红点提示。我们在小程序端提供 getSignStatus 查询当日签到状态接口。
+3. [管理端配置说明](https://github.com/TencentCloudBase-PageModule/integral-module/tree/master/docs/admin)
