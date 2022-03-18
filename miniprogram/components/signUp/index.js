@@ -287,7 +287,7 @@ Component({
           } else {
             this.triggerEvent('doSign', { code, result });
             wx.showToast({
-              title: '今日已签到',
+              title: '签到失败',
             });
           }
         } else {
@@ -496,7 +496,7 @@ Component({
   lifetimes: {
     async attached() {
       try {
-
+        console.log(this.properties)
         if (this.properties.baseConfig.length > 0) {
           let obj = {};
           for (const key of this.properties.baseConfig) {
