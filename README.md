@@ -5,6 +5,8 @@
 ![](https://qcloudimg.tencent-cloud.cn/raw/1b92253712fe5a274d69e6952b15393d.png)
 
 ## 资源
+
 1. [小程序源码组件](./miniprogram/)
-2. [自定义接口云函数示例](./function/) 
-3. [相关资源](./assets/)
+2. [自定义接口及B端云函数示例](./function/)
+3. [与业务模块联动](./docs/diy.md)
+4. [管理端配置说明](./docs/admin.md)
