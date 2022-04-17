@@ -7,7 +7,7 @@ module.exports = async function setRemind(params, context){
       // https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/cloudbase/cloudbase.addDelayedFunctionTask.html
       const reData = await objCloud.openapi.cloudbase.addDelayedFunctionTask({
         env: ENV,
-        functionName: 'page_module_tcb_sign_up',
+        functionName: 'page-module-sign-up',
         data: JSON.stringify({
           methodName: 'set_remind',
           params: {
@@ -37,7 +37,7 @@ module.exports = async function setRemind(params, context){
         touser: openId,
         templateId: temId,
         page,
-        data,
+        data: JSON.stringify(data),
       });
       console.log('消息发送结果:',reData);
       return reData;
